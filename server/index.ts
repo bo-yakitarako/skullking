@@ -3,7 +3,7 @@ import next from 'next';
 import { Server } from 'socket.io';
 
 const dev = process.env.NODE_ENV !== 'production';
-const app = next({ dev });
+const app = next({ dev, dir: './client' });
 const nextApiHandler = app.getRequestHandler();
 const port = process.env.PORT ?? 3000;
 
