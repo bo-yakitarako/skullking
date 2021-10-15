@@ -18,17 +18,18 @@ app.prepare().then(() => {
 
   server.all('*', (req, res) => nextApiHandler(req, res));
 
+  const infoHead = '\x1b[37m\x1b[44m[info]\x1b[0m';
   const httpServer = server.listen(port, () => {
-    console.log('開発用サーバー起動！\n開こう: https://skullking/');
+    console.log(`\n${infoHead} \x1b[45m\x1b[37m開発用サーバー起動！\x1b[0m`);
+    console.log(
+      `\n${infoHead} 開発用URL(cmd+クリック): \x1b[36m\x1b[4mhttps://skullking\x1b[0m\n`,
+    );
   });
 
   const io = new Server(httpServer);
 
   io.on('connection', (socket) => {
-    console.log(
-      '%cWebSocketサーバー接続成功!%c',
-      'font-weight: 700; text-decoration: underline;',
-    );
+    console.log(`${infoHead} WebSocketサーバー接続成功!\x1b[0m`);
     socket.on('disconnect', () => {
       console.log('接続切れちゃったよ...');
     });
