@@ -18,11 +18,13 @@ app.prepare().then(() => {
 
   server.all('*', (req, res) => nextApiHandler(req, res));
 
+  // 装飾についてはここから
+  // @see https://note.affi-sapo-sv.com/nodejs-console-color-output.php
   const infoHead = '\x1b[37m\x1b[44m[info]\x1b[0m';
   const httpServer = server.listen(port, () => {
-    console.log(`\n${infoHead} \x1b[45m\x1b[37m開発用サーバー起動！\x1b[0m`);
+    console.log(`\n${infoHead} \x1b[45m\x1b[37mdevサーバー起動！\x1b[0m`);
     console.log(
-      `\n${infoHead} 開発用URL(cmd+クリック): \x1b[36m\x1b[4mhttps://skullking\x1b[0m\n`,
+      `\n${infoHead} 開発用URL(cmd+クリック): \x1b[36m\x1b[4mhttps://skullking/\x1b[0m\n`,
     );
   });
 
