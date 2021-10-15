@@ -31,6 +31,6 @@ async function http<Res>(
     }
   }
   const fetched = await fetch(path, requestConfig);
-  const response: Res = await fetched.json();
+  const response: Res & { ok: boolean } = await fetched.json();
   return response;
 }
