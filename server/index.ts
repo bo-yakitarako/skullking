@@ -3,7 +3,9 @@ import next from 'next';
 import { Server } from 'socket.io';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-type Req<Body> = Request<any, any, Body>;
+type PostReq<Body> = Request<any, any, Body>;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type GetReq<Params> = Request<any, any, any, Params>;
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev, dir: './client' });
@@ -17,12 +19,12 @@ app.prepare().then(() => {
   server.use(express.urlencoded({ extended: true }));
   server.use(express.json());
 
-  server.get('/api/unko', (req: Req<{ baka?: string }>, res) => {
-    const { baka } = req.body;
+  server.get('/api/unko', (req: GetReq<{ baka?: string }>, res) => {
+    const { baka } = req.query;
     res.json({ ok: typeof baka !== 'undefined', baka });
   });
 
-  server.post('/socket/message', (req: Req<{ message: string }>, res) => {
+  server.post('/socket/message', (req: PostReq<{ message: string }>, res) => {
     message = req.body.message;
     sendMessage();
     res.json({ ok: true });
