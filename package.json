@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "docker": "cd docker; docker-compose up --build -d; yarn web",
+    "web": "docker exec -it node bash",
+    "docker-stop": "cd docker; docker-compose down",
     "dev": "nodemon",
     "build": "next build",
     "start": "next start",
