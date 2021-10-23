@@ -1,7 +1,8 @@
 name: guruguru
 on:
   push:
-    - main
+    branches:
+      - main
   pull_request:
     paths:
       - '.github/workflows/server.yml'
