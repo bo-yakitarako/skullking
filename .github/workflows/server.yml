@@ -1,0 +1,24 @@
+name: CI回れ回れ回れ
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    paths:
+      - '.github/workflows/server.yml'
+      - 'server/**'
+jobs:
+  Jest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Node.jsのセットアップ
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - name: yarn入れましょう
+        run: npm install --global yarn
+      - name: パッケージ入れるお(＾ω＾)
+        run: yarn install
+      - name: テスト実行〜
+        run: yarn jest

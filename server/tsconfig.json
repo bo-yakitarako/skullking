@@ -4,7 +4,8 @@
     "module": "commonjs",
     "outDir": "dist",
     "target": "ESNext",
-    "isolatedModules": false
+    "isolatedModules": false,
+    "esModuleInterop": true
   },
   "include": ["./**/*.ts"]
 }
