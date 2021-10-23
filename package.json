@@ -10,7 +10,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest"
+    "test": "jest",
+    "open-ca": "open ./docker/nginx/skullkingCA/ca.der"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.6.10",
