@@ -57,7 +57,7 @@ $ yarn install
 
 これで完璧だ...
 
-## 4. 開発サーバー立てる
+### 4. 開発サーバー立てる
 Docker環境を構築するので、[Docker Desktop for Mac](https://hub.docker.com/editions/community/docker-ce-desktop-mac/)をダウンロードして実行しておきましょ
 
 できたら以下のコマンド打ってしばし松
@@ -75,7 +75,7 @@ $ yarn dev
 
 で開発用サーバーが立つので https://skullking/ にアクセスしてみましょう。なんも出てきません。は？
 
-## 5. hostsファイルを編集する
+### 5. hostsファイルを編集する
 当然`skullking`なんてドメイン無いので、ローカルで名前解決してやる必要があります。
 
 **別のターミナル開いて**、以下のコマンドで`/etc/hosts`にドメイン情報を追記しましょう
@@ -86,7 +86,7 @@ $ echo '\n# SkullKing Web\n127.0.0.1 skullking' >> /etc/hosts
 
 これで名前解決できたので https://skullking/ にアクセスしてHello, Skullkingって言おう！警告出ます。は？
 
-## 5. オレオレ認証局を信頼する
+### 6. オレオレ認証局を信頼する
 このプロジェクト独自にSSL証明書作ってhttps化してんだけど、デフォルトだと認証局が登録されてなくてhttpsに行けないので認証局を登録しやす
 
 ```shell
