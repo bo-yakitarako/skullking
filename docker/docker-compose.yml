@@ -1,13 +1,14 @@
 version: '2'
 services:
   node:
-    build: ../
+    build: ./node
     volumes:
       - '../:/usr/app'
     ports:
       - '3000:3000'
-    command: sh -c "yarn dev"
-    container_name: docker_node
+    # command: sh -c "yarn dev"
+    stdin_open: true
+    container_name: node
   nginx:
     build: ./nginx
     ports:
@@ -17,4 +18,4 @@ services:
       - './nginx/server.conf:/etc/nginx/conf.d/server.conf'
     links:
       - node
-    container_name: docker_nginx
+    container_name: nginx
