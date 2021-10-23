@@ -16,8 +16,6 @@ services:
     ports:
       - '80:80'
       - '443:443'
-    volumes:
-      - './nginx/server.conf:/etc/nginx/conf.d/server.conf'
     links:
       - node
     container_name: nginx
