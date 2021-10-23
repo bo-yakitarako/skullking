@@ -6,7 +6,7 @@
     "docker": "cd docker; docker-compose up --build -d; yarn web",
     "web": "docker exec -it node bash",
     "docker-stop": "cd docker; docker-compose down",
-    "dev": "nodemon",
+    "dev": "bash ./dev.sh",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
