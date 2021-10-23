@@ -41,10 +41,10 @@ Node.jsのバージョンを簡単に変えられるnvmってやつ入れて、�
 VS Codeでターミナル開いて
 
 ```shell
-$ brew update
-$ brew install nvm
+$ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+$ source ~/.zshrc
 $ nvm install v14.18.1
-$ node --version
+$ node --version # v14.18.1って出ればおk
 ```
 
 ### 3. パッケージインストールする
@@ -57,12 +57,48 @@ $ yarn install
 
 これで完璧だ...
 
-## 開発サーバー立てる
-以下のコマンドで開発サーバー立てると http://localhost:3000/ にアクセスでなんか見れるよん
+## 4. 開発サーバー立てる
+Docker環境を構築するので、[Docker Desktop for Mac](https://hub.docker.com/editions/community/docker-ce-desktop-mac/)をダウンロードして実行しておきましょ
 
+できたら以下のコマンド打ってしばし松
+```shell
+$ yarn docker
+$ yarn docker-stop # これはDocker終了用コマンド
+```
+
+なんか色々終わると`root@*:/usr/app#`的なのがコマンドラインに出てくるので、そしたらDocker構築は完了でつ
+
+あとはそのまま
 ```shell
 $ yarn dev
 ```
+
+で開発用サーバーが立つので https://skullking/ にアクセスしてみましょう。なんも出てきません。は？
+
+## 5. hostsファイルを編集する
+当然`skullking`なんてドメイン無いので、ローカルで名前解決してやる必要があります。
+
+**別のターミナル開いて**、以下のコマンドで`/etc/hosts`にドメイン情報を追記しましょう
+
+```shell
+$ echo '\n# SkullKing Web\n127.0.0.1 skullking' >> /etc/hosts
+```
+
+これで名前解決できたので https://skullking/ にアクセスしてHello, Skullkingって言おう！警告出ます。は？
+
+## 5. オレオレ認証局を信頼する
+このプロジェクト独自にSSL証明書作ってhttps化してんだけど、デフォルトだと認証局が登録されてなくてhttpsに行けないので認証局を登録しやす
+
+```shell
+$ yarn open-ca
+```
+
+キーチェーンアクセスが開いて`skullking-ca`がどっかに追加されます。
+`skullking-ca`をダブルクリックで開いて、`信頼`のタブを開いた後に`この証明書を使用するとき`で`常に信頼`を選んでおきます。
+
+これで全ての準備が完了！
+https://skullking/ にアクセスしてみよう！
+Hello, SkullKing!!!
 
 ## テスト
 **サーバーサイドでなんか作ったら必ずテストで確認しとこうね**
