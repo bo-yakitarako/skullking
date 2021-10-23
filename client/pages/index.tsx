@@ -4,7 +4,7 @@ import { SocketSample } from '../components/SocketSample';
 
 const Home: NextPage = () => {
   return (
-    <div className="p-0 m-0">
+    <>
       <Head>
         <title>スカルキングのゲーム</title>
         <meta name="description" content="お前も神ゲーにならないか？" />
@@ -12,7 +12,7 @@ const Home: NextPage = () => {
       <main>
         <SocketSample />
       </main>
-    </div>
+    </>
   );
 };
 

@@ -1,3 +1,6 @@
+import { Button } from '@chakra-ui/button';
+import { Box, Text } from '@chakra-ui/layout';
+import { Textarea } from '@chakra-ui/textarea';
 import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
 import { post } from '../modules/http';
@@ -27,20 +30,39 @@ const SocketSample: React.FC = () => {
   }, [inputText]);
 
   return (
-    <div className="flex flex-col justify-center items-center p-4 w-full h-screen">
-      <p className="text-2xl font-bold">{message}</p>
-      <textarea
+    <Box
+      display="flex"
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="center"
+      width="100%"
+      height="100vh"
+    >
+      <Text fontSize="2xl" fontWeight="bold">
+        {message}
+      </Text>
+      <Textarea
+        padding={2}
+        marginY={4}
+        width={240}
         value={inputText}
         onChange={handleInput}
-        className="p-2 my-4 w-60 rounded-lg border-2 border-gray-400"
+        borderColor="green.400"
+        _hover={{ borderColor: 'green.200' }}
       />
-      <button
-        className="py-2 w-32 text-sm text-gray-700 bg-white rounded-lg border-[1px] border-blue-600"
+      <Button
+        paddingY={4}
+        width={128}
+        fontSize="sm"
+        color="gray.700"
+        backgroundColor="white"
+        borderWidth={1}
+        borderColor="blue.400"
         onClick={send}
       >
         送信しよ...
-      </button>
-    </div>
+      </Button>
+    </Box>
   );
 };
 
