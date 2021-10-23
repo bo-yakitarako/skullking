@@ -1,9 +1,10 @@
-import { ChangeEvent, useCallback, useEffect, useMemo, useState } from 'react';
+import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
 import { post } from '../modules/http';
 
+const socket = io();
+
 const SocketSample: React.FC = () => {
-  const socket = useMemo(() => io(), []);
   const [message, setMessage] = useState('　');
   const [inputText, setInputText] = useState('');
 
