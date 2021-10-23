@@ -1,7 +1,13 @@
-name: Jest
-on: push
+name: CI回れ回れ
+on:
+  push:
+    - main
+  pull_request:
+    paths:
+      - '.github/workflows/server.yml'
+      - 'server/**'
 jobs:
-  テスト:
+  Jest:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
