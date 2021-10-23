@@ -40,7 +40,7 @@ app.prepare().then(() => {
       `\n${infoHead} \x1b[45m\x1b[37mdevサーバー準備万端だぜ！\x1b[0m`,
     );
     console.log(
-      `\n${infoHead} 開発用URL(cmd+クリック): \x1b[36m\x1b[4mhttp://skullking/\x1b[0m\n`,
+      `\n${infoHead} 開発用URL(cmd+クリック): \x1b[36m\x1b[4mhttps://skullking/\x1b[0m\n`,
     );
   });
 

@@ -1,0 +1,91 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 1 (0x1)
+    Signature Algorithm: sha256WithRSAEncryption
+        Issuer: C=JP, ST=Skullking, L=Mermaid, O=Skullking Pirates inc., OU=Oreore Gr., CN=skullking-ca
+        Validity
+            Not Before: Oct 23 17:52:17 2021 GMT
+            Not After : Jan 21 17:52:17 2024 GMT
+        Subject: C=JP, ST=Skullking, O=Skullking Pirates inc., CN=skullking
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (2048 bit)
+                Modulus:
+                    00:c0:b7:d4:63:88:e4:44:a6:69:28:59:75:b2:68:
+                    ca:7a:5f:a9:1e:8f:76:07:76:18:44:f3:43:f7:a8:
+                    79:24:fc:fc:36:49:9c:5a:27:92:ad:69:ae:02:52:
+                    52:d4:c4:42:1b:2d:eb:f7:6c:bd:31:25:55:7f:2f:
+                    0f:fc:4c:9e:be:f5:eb:d5:cf:81:55:f9:1f:9b:43:
+                    d5:69:46:b9:8e:8c:4c:2a:71:b5:30:70:25:88:93:
+                    26:38:58:3a:ee:38:cb:09:fb:21:ac:83:67:9d:58:
+                    16:93:76:c9:05:31:71:f6:57:6f:ca:86:a2:9f:52:
+                    69:bc:ca:4d:ff:c0:38:09:15:68:c5:c4:85:b5:3f:
+                    98:07:25:c3:de:e8:01:44:a6:08:c4:78:6e:b1:ef:
+                    2f:a2:0b:3f:67:da:ef:3f:46:c5:cb:3f:39:7a:03:
+                    08:96:be:89:7d:8a:eb:75:61:97:76:29:a3:8a:e9:
+                    4e:97:d3:da:21:f8:f6:99:2d:4b:05:0d:c6:75:8a:
+                    26:7a:8b:c3:73:60:01:68:64:d6:bd:ad:5d:7c:2e:
+                    d9:d4:14:d8:a7:64:9f:bf:31:02:b6:cd:86:11:d7:
+                    fa:01:7c:34:97:77:ad:75:b6:b9:5e:1e:44:22:a1:
+                    c6:7a:ef:f2:79:cc:f4:b5:3f:39:15:da:02:a9:72:
+                    f1:17
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            Netscape Comment: 
+                OpenSSL Generated Certificate
+            X509v3 Subject Key Identifier: 
+                1F:18:30:F0:4F:E5:9E:0D:B3:21:EF:7D:03:8B:5E:2B:B4:ED:A6:BA
+            X509v3 Authority Key Identifier: 
+                DirName:/C=JP/ST=Skullking/L=Mermaid/O=Skullking Pirates inc./OU=Oreore Gr./CN=skullking-ca
+                serial:D6:37:2A:7A:6D:1D:11:A4
+
+            X509v3 Subject Alternative Name: 
+                DNS:skullking, DNS:*.skullking
+            X509v3 Extended Key Usage: critical
+                Time Stamping, TLS Web Server Authentication, TLS Web Client Authentication, Code Signing
+    Signature Algorithm: sha256WithRSAEncryption
+         8b:f4:a2:a2:d5:5e:06:33:8f:0a:44:87:1b:76:9f:40:cc:67:
+         a2:55:89:91:31:3d:d1:86:cd:3a:3b:ef:37:c5:c0:41:de:25:
+         b1:3a:af:88:36:65:ec:53:e7:d7:48:de:b9:de:ee:cf:ea:26:
+         18:3d:74:de:8d:d1:ee:ff:71:94:28:17:b4:f2:02:48:a4:0b:
+         03:1e:17:23:2b:13:fd:fe:99:d1:57:45:16:a9:10:11:59:d6:
+         d7:3a:09:19:8f:e0:d0:24:60:15:e9:ce:b3:f8:c3:80:5d:65:
+         37:21:5d:d7:49:ec:26:87:e8:ce:26:c9:48:5d:64:10:c4:ef:
+         55:b0:fb:db:38:09:fd:78:ac:a6:81:5b:6f:2f:14:03:b6:32:
+         38:f6:1b:57:3a:79:83:8b:82:df:80:d2:b9:97:14:65:68:37:
+         b1:ba:2c:ca:6b:c9:8a:1f:92:ff:e0:ba:b6:11:4b:a5:d5:eb:
+         06:db:ed:c8:2a:a5:e5:b2:e9:fb:f3:b7:e2:35:6d:84:16:a9:
+         89:bb:77:8a:21:a4:c1:46:0c:9a:f8:c8:7f:85:08:f8:f1:ea:
+         47:e7:3e:8e:ca:f3:e5:26:d3:0f:56:bf:60:2b:62:73:6d:5f:
+         f5:07:7c:2f:a0:3b:e0:fe:84:84:3c:f8:d4:98:7f:0d:ad:be:
+         db:5c:61:6d
+-----BEGIN CERTIFICATE-----
+MIIEqzCCA5OgAwIBAgIBATANBgkqhkiG9w0BAQsFADCBgDELMAkGA1UEBhMCSlAx
+EjAQBgNVBAgMCVNrdWxsa2luZzEQMA4GA1UEBwwHTWVybWFpZDEfMB0GA1UECgwW
+U2t1bGxraW5nIFBpcmF0ZXMgaW5jLjETMBEGA1UECwwKT3Jlb3JlIEdyLjEVMBMG
+A1UEAwwMc2t1bGxraW5nLWNhMB4XDTIxMTAyMzE3NTIxN1oXDTI0MDEyMTE3NTIx
+N1owVjELMAkGA1UEBhMCSlAxEjAQBgNVBAgMCVNrdWxsa2luZzEfMB0GA1UECgwW
+U2t1bGxraW5nIFBpcmF0ZXMgaW5jLjESMBAGA1UEAwwJc2t1bGxraW5nMIIBIjAN
+BgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwLfUY4jkRKZpKFl1smjKel+pHo92
+B3YYRPND96h5JPz8NkmcWieSrWmuAlJS1MRCGy3r92y9MSVVfy8P/EyevvXr1c+B
+Vfkfm0PVaUa5joxMKnG1MHAliJMmOFg67jjLCfshrINnnVgWk3bJBTFx9ldvyoai
+n1JpvMpN/8A4CRVoxcSFtT+YByXD3ugBRKYIxHhuse8vogs/Z9rvP0bFyz85egMI
+lr6JfYrrdWGXdimjiulOl9PaIfj2mS1LBQ3GdYomeovDc2ABaGTWva1dfC7Z1BTY
+p2SfvzECts2GEdf6AXw0l3etdba5Xh5EIqHGeu/yecz0tT85FdoCqXLxFwIDAQAB
+o4IBVzCCAVMwCQYDVR0TBAIwADAsBglghkgBhvhCAQ0EHxYdT3BlblNTTCBHZW5l
+cmF0ZWQgQ2VydGlmaWNhdGUwHQYDVR0OBBYEFB8YMPBP5Z4NsyHvfQOLXiu07aa6
+MIGfBgNVHSMEgZcwgZShgYakgYMwgYAxCzAJBgNVBAYTAkpQMRIwEAYDVQQIDAlT
+a3VsbGtpbmcxEDAOBgNVBAcMB01lcm1haWQxHzAdBgNVBAoMFlNrdWxsa2luZyBQ
+aXJhdGVzIGluYy4xEzARBgNVBAsMCk9yZW9yZSBHci4xFTATBgNVBAMMDHNrdWxs
+a2luZy1jYYIJANY3KnptHRGkMCEGA1UdEQQaMBiCCXNrdWxsa2luZ4ILKi5za3Vs
+bGtpbmcwNAYDVR0lAQH/BCowKAYIKwYBBQUHAwgGCCsGAQUFBwMBBggrBgEFBQcD
+AgYIKwYBBQUHAwMwDQYJKoZIhvcNAQELBQADggEBAIv0oqLVXgYzjwpEhxt2n0DM
+Z6JViZExPdGGzTo77zfFwEHeJbE6r4g2ZexT59dI3rne7s/qJhg9dN6N0e7/cZQo
+F7TyAkikCwMeFyMrE/3+mdFXRRapEBFZ1tc6CRmP4NAkYBXpzrP4w4BdZTchXddJ
+7CaH6M4myUhdZBDE71Ww+9s4Cf14rKaBW28vFAO2Mjj2G1c6eYOLgt+A0rmXFGVo
+N7G6LMpryYofkv/gurYRS6XV6wbb7cgqpeWy6fvzt+I1bYQWqYm7d4ohpMFGDJr4
+yH+FCPjx6kfnPo7K8+Um0w9Wv2ArYnNtX/UHfC+gO+D+hIQ8+NSYfw2tvttcYW0=
+-----END CERTIFICATE-----
