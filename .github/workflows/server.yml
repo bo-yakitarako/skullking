@@ -1,4 +1,4 @@
-name: CI回れ回れ
+name: guruguru
 on:
   push:
     - main
