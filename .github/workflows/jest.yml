@@ -1,5 +1,5 @@
 name: Jest
-on: [push]
+on: [pull_request]
 jobs:
   テスト:
     runs-on: ubuntu-latest
