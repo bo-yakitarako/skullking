@@ -12,7 +12,7 @@ const app = next({ dev, dir: './client' });
 const nextApiHandler = app.getRequestHandler();
 const port = process.env.PORT ?? 3000;
 
-let message = 'こいつぁすげぇメッセージだぜ';
+let message = '本日は雨天なり';
 
 app.prepare().then(() => {
   const server = express();
