@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
   reactStrictMode: true,
-  distDir: '../.next',
+  distDir: '.next',
   webpackDevMiddleware: (config) => {
     config.watchOptions = {
       aggregateTimeout: 300,

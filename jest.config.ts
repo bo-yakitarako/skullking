@@ -61,7 +61,7 @@ export default {
 
   // A set of global variables that need to be available in all test environments
   globals: {
-    'ts-jest': {
+    'esbuild-jest': {
       tsconfig: './server/tsconfig.json',
     }
   },
@@ -177,7 +177,7 @@ export default {
 
   // A map from regular expressions to paths to transformers
   transform: {
-    "^.+\\.(ts|tsx)$": "ts-jest"
+    "^.+\\.(ts|tsx)$": "esbuild-jest"
   },
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation

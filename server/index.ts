@@ -10,7 +10,7 @@ type GetReq<Params> = Request<any, any, any, Params>;
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev, dir: './client' });
 const nextApiHandler = app.getRequestHandler();
-const port = process.env.PORT ?? 3000;
+const port = dev ? 3000 : 5000;
 
 let message = '屯田兵';
 
@@ -36,18 +36,24 @@ app.prepare().then(() => {
   // @see https://note.affi-sapo-sv.com/nodejs-console-color-output.php
   const infoHead = '\x1b[37m\x1b[44m[info]\x1b[0m';
   const httpServer = server.listen(port, () => {
-    console.log(
-      `\n${infoHead} \x1b[45m\x1b[37mdevサーバー準備万端だぜ！\x1b[0m`,
-    );
-    console.log(
-      `\n${infoHead} 開発用URL(cmd+クリック): \x1b[36m\x1b[4mhttps://skullking/\x1b[0m\n`,
-    );
+    if (dev) {
+      console.log(
+        `\n${infoHead} \x1b[45m\x1b[37mdevサーバー準備万端だぜ！\x1b[0m`,
+      );
+      console.log(
+        `\n${infoHead} 開発用URL(cmd+クリック): \x1b[36m\x1b[4mhttps://skullking/\x1b[0m\n`,
+      );
+    } else {
+      console.log(`${infoHead} スカルキング始まったな`);
+    }
   });
 
   const io = new Server(httpServer);
 
   io.on('connection', (socket) => {
-    console.log(`${infoHead} WebSocketサーバー接続!\x1b[0m`);
+    if (dev) {
+      console.log(`${infoHead} WebSocketサーバー接続!\x1b[0m`);
+    }
     socket.send(message);
   });
 
