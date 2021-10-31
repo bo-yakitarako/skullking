@@ -9,3 +9,10 @@ export const nameState = atom({
   key: 'nameState',
   default: '',
 });
+
+export type StartPlayer = { playerId: number; name: string };
+
+export const startPlayersState = atom({
+  key: 'startPlayersState',
+  default: [] as StartPlayer[],
+});

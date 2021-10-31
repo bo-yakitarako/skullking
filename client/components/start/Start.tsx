@@ -5,6 +5,8 @@ import { Tooltip } from '@chakra-ui/react';
 import { keyframes } from '@chakra-ui/system';
 import { useBreakpointValue } from '@chakra-ui/media-query';
 import { NameBox } from './NameBox';
+import { useRecoilValue } from 'recoil';
+import { startPlayersState } from '../../modules/state';
 
 const setCrowdyKeyframe = (rotate: number) => `
   0%, 100% {
@@ -17,6 +19,8 @@ const setCrowdyKeyframe = (rotate: number) => `
 
 const Start: React.FC = () => {
   const isMobile = useBreakpointValue({ base: true, md: false });
+  const { length } = useRecoilValue(startPlayersState);
+  const canStart = length >= 2 && length <= 6;
   return (
     <Box
       backgroundColor="gray.900"
@@ -69,9 +73,14 @@ const Start: React.FC = () => {
             <>すかるきんぐ</>
           )}
         </Text>
-        <Tooltip label="2人以上いないと始められないよ><" hasArrow bg="red.600">
+        <Tooltip
+          label="2人以上いないと始められないよ><"
+          hasArrow
+          bg="red.600"
+          isDisabled={canStart}
+        >
           <Box width="fit-content" marginX="auto" marginY="8">
-            <Button width="64" size="lg" fontSize="xl" disabled={true}>
+            <Button width="64" size="lg" fontSize="xl" disabled={!canStart}>
               はじめる
             </Button>
           </Box>
