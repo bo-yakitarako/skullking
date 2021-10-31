@@ -55,7 +55,7 @@ const Start: React.FC = () => {
           position="relative"
           color="white"
           fontSize={{ base: '5xl', md: '7xl' }}
-          paddingX={{ base: 16, sm: 28 }}
+          paddingX={{ base: 20, sm: 28 }}
           zIndex={10}
         >
           {isMobile ? (

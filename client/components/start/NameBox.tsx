@@ -15,7 +15,7 @@ const NameBox: React.FC = () => {
     return <StartNameForm setCanEdit={setCanEdit} />;
   }
   return (
-    <Box display="flex" justifyContent="center">
+    <Box display="flex" justifyContent="center" alignItems="center">
       <Text color="white" fontSize="xl" textAlign="left">
         ( ・ω・)ﾉやあ、
         {isMobile && <br />}
