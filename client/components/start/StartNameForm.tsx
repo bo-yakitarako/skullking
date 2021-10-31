@@ -1,14 +1,18 @@
 import { Button } from '@chakra-ui/button';
 import { Input } from '@chakra-ui/input';
 import { Box, Text } from '@chakra-ui/layout';
-import { useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { useRecoilState } from 'recoil';
+import { nameState } from '../../modules/state';
 
 type NameForm = {
   name: string;
 };
 
 const StartNameForm: React.FC = () => {
+  const [value, setStoreName] = useRecoilState(nameState);
+
   const {
     register,
     handleSubmit,
@@ -18,6 +22,13 @@ const StartNameForm: React.FC = () => {
     criteriaMode: 'all',
     shouldFocusError: false,
   });
+
+  const onChange: React.ChangeEventHandler<HTMLInputElement> = useCallback(
+    (event) => {
+      setStoreName(event.target.value);
+    },
+    [setStoreName],
+  );
 
   const errorMessage = useMemo(() => {
     if (errors.name?.types?.required) {
@@ -37,7 +48,12 @@ const StartNameForm: React.FC = () => {
       <Box display="flex" width="fit-content" marginX="auto">
         <Box width="fit-content">
           <Input
-            {...register('name', { required: true, maxLength: 10 })}
+            {...register('name', {
+              required: true,
+              maxLength: 10,
+              value,
+              onChange,
+            })}
             placeholder="名前を入力"
             color="white"
           />
