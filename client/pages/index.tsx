@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { SocketSample } from '../components/SocketSample';
+import { Start } from '../components/start/Start';
 
 const Home: NextPage = () => {
   return (
@@ -10,7 +10,7 @@ const Home: NextPage = () => {
         <meta name="description" content="お前も神ゲーにならないか？" />
       </Head>
       <main>
-        <SocketSample />
+        <Start />
       </main>
     </>
   );
