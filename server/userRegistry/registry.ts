@@ -1,10 +1,6 @@
 import { Response } from 'express';
-import { Server } from 'socket.io';
-import { DefaultEventsMap } from 'socket.io/dist/typed-events';
-import { PostReq } from '../index';
+import type { PostReq, SocketIO } from '../index';
 import { Player } from './Player';
-
-type SocketIO = Server<DefaultEventsMap, DefaultEventsMap, DefaultEventsMap>;
 
 export let players: Player[] = [];
 

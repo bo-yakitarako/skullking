@@ -1,12 +1,18 @@
 import express, { Request } from 'express';
 import next from 'next';
 import { Server } from 'socket.io';
+import { DefaultEventsMap } from 'socket.io/dist/typed-events';
 import { createRegistryFunction } from './userRegistry/registry';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type PostReq<Body> = Request<any, any, Body>;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type GetReq<Params> = Request<any, any, any, Params>;
+export type SocketIO = Server<
+  DefaultEventsMap,
+  DefaultEventsMap,
+  DefaultEventsMap
+>;
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev, dir: './client' });
