@@ -10,7 +10,7 @@
     "client-build": "next build ./client",
     "server-build": "rm -rf dist; tsc -p server",
     "build": "yarn server-build; yarn client-build",
-    "start": "NODE_ENV=production node ./dist/index.ts",
+    "start": "NODE_ENV=production node ./dist/index.js",
     "lint": "next lint",
     "test": "jest",
     "open-ca": "open ./docker/nginx/skullkingCA/ca.der"
