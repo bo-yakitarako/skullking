@@ -8,5 +8,6 @@
     "isolatedModules": false,
     "esModuleInterop": true
   },
-  "include": ["./**/*.ts"]
+  "include": ["./**/*.ts"],
+  "exclude": ["./tests", "./testModule.ts"]
 }
