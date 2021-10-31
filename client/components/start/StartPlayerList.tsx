@@ -16,7 +16,6 @@ const StartPlayerList: React.FC = () => {
       width="60"
       height="fit-content"
       padding="4"
-      fontFamily="'Hachi Maru Pop', cursive"
       zIndex={11}
     >
       <Text

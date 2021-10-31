@@ -31,12 +31,7 @@ const Start: React.FC = () => {
       justifyContent="center"
       alignItems="center"
     >
-      <Box
-        width="fit-content"
-        position="relative"
-        fontFamily="'Hachi Maru Pop', cursive"
-        textAlign="center"
-      >
+      <Box width="fit-content" position="relative" textAlign="center">
         <Image
           alt="海賊男"
           src="/images/start/kaizoku_man.png"
