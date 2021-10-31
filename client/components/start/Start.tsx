@@ -3,6 +3,7 @@ import { Image } from '@chakra-ui/image';
 import { Box, Text } from '@chakra-ui/layout';
 import { Tooltip } from '@chakra-ui/react';
 import { keyframes } from '@chakra-ui/system';
+import { useBreakpointValue } from '@chakra-ui/media-query';
 import { NameBox } from './NameBox';
 
 const setCrowdyKeyframe = (rotate: number) => `
@@ -15,6 +16,7 @@ const setCrowdyKeyframe = (rotate: number) => `
 `;
 
 const Start: React.FC = () => {
+  const isMobile = useBreakpointValue({ base: true, md: false });
   return (
     <Box
       backgroundColor="gray.900"
@@ -35,7 +37,8 @@ const Start: React.FC = () => {
           alt="海賊男"
           src="/images/start/kaizoku_man.png"
           position="absolute"
-          width="28"
+          top={{ base: 8, sm: 6, md: 0 }}
+          width={{ base: 20, sm: 24, md: 28 }}
           zIndex={1}
           animation={`${keyframes(setCrowdyKeyframe(-10))} 3s infinite`}
         />
@@ -43,7 +46,8 @@ const Start: React.FC = () => {
           alt="海賊女"
           src="/images/start/kaizoku_woman.png"
           position="absolute"
-          width="32"
+          top={{ base: 8, sm: 6, md: 0 }}
+          width={{ base: 20, sm: 24, md: 28 }}
           zIndex={1}
           animation={`${keyframes(setCrowdyKeyframe(10))} 3s infinite`}
           right="0"
@@ -51,11 +55,19 @@ const Start: React.FC = () => {
         <Text
           position="relative"
           color="white"
-          fontSize="7xl"
-          paddingX="28"
+          fontSize={{ base: '5xl', md: '7xl' }}
+          paddingX={{ base: 16, sm: 28 }}
           zIndex={10}
         >
-          すかるきんぐ
+          {isMobile ? (
+            <>
+              すかる
+              <br />
+              きんぐ
+            </>
+          ) : (
+            <>すかるきんぐ</>
+          )}
         </Text>
         <Tooltip label="2人以上いないと始められないよ><" hasArrow bg="red.600">
           <Box width="fit-content" marginX="auto" marginY="8">
