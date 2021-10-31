@@ -6,7 +6,7 @@ import { keyframes } from '@chakra-ui/system';
 import { useBreakpointValue } from '@chakra-ui/media-query';
 import { NameBox } from './NameBox';
 import { useRecoilValue } from 'recoil';
-import { startPlayersState } from '../../modules/state';
+import { playerCountSelector } from '../../modules/state';
 
 const setCrowdyKeyframe = (rotate: number) => `
   0%, 100% {
@@ -19,8 +19,8 @@ const setCrowdyKeyframe = (rotate: number) => `
 
 const Start: React.FC = () => {
   const isMobile = useBreakpointValue({ base: true, md: false });
-  const { length } = useRecoilValue(startPlayersState);
-  const canStart = length >= 2 && length <= 6;
+  const playerCount = useRecoilValue(playerCountSelector);
+  const canStart = playerCount >= 2 && playerCount <= 6;
   return (
     <Box
       backgroundColor="gray.900"
