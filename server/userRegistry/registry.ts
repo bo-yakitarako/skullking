@@ -26,6 +26,7 @@ export const createRegistryFunction = (io: SocketIO) => {
       return;
     }
     player.rename(name);
+    io.emit('startPlayers', [...players.map((p) => p.createTitleJson())]);
     res.json({ ok: true, name });
   };
 
