@@ -1,17 +1,23 @@
 import { Button } from '@chakra-ui/button';
 import { Input } from '@chakra-ui/input';
 import { Box, Text } from '@chakra-ui/layout';
-import { useCallback, useMemo } from 'react';
+import { Dispatch, SetStateAction, useCallback, useMemo } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useRecoilState } from 'recoil';
-import { nameState } from '../../modules/state';
+import { post } from '../../modules/http';
+import { nameState, playerIdState } from '../../modules/state';
 
 type NameForm = {
   name: string;
 };
 
-const StartNameForm: React.FC = () => {
+type Props = {
+  setCanEdit: Dispatch<SetStateAction<boolean>>;
+};
+
+const StartNameForm: React.FC<Props> = ({ setCanEdit }) => {
   const [value, setStoreName] = useRecoilState(nameState);
+  const [playerId, setStorePlayerId] = useRecoilState(playerIdState);
 
   const {
     register,
@@ -42,7 +48,23 @@ const StartNameForm: React.FC = () => {
 
   const isValidName = typeof errors.name === 'undefined';
 
-  const onSubmit: SubmitHandler<NameForm> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<NameForm> = async ({ name }) => {
+    if (playerId === 0) {
+      const param = { name };
+      const res = await post<{ playerId: number }>('/api/createPlayer', param);
+      if (res.ok) {
+        setStorePlayerId(res.playerId);
+        setCanEdit(false);
+      }
+    } else {
+      const param = { name, playerId };
+      const res = await post<{ name: string }>('/api/renamePlayer', param);
+      if (res.ok) {
+        setStoreName(res.name);
+        setCanEdit(false);
+      }
+    }
+  };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Box display="flex" width="fit-content" marginX="auto">

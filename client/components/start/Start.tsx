@@ -3,7 +3,7 @@ import { Image } from '@chakra-ui/image';
 import { Box, Text } from '@chakra-ui/layout';
 import { Tooltip } from '@chakra-ui/react';
 import { keyframes } from '@chakra-ui/system';
-import { StartNameForm } from './StartNameForm';
+import { NameBox } from './NameBox';
 
 const setCrowdyKeyframe = (rotate: number) => `
   0%, 100% {
@@ -64,7 +64,7 @@ const Start: React.FC = () => {
             </Button>
           </Box>
         </Tooltip>
-        <StartNameForm />
+        <NameBox />
       </Box>
     </Box>
   );
