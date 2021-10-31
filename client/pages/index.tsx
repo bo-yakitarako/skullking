@@ -6,7 +6,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>スカルキングのゲーム</title>
+        <title>すかるきんぐ</title>
         <meta name="description" content="お前も神ゲーにならないか？" />
       </Head>
       <main>
