@@ -16,6 +16,8 @@
 
 # production
 /build
+/dist
+/.vscode/sftp.json
 
 # misc
 .DS_Store

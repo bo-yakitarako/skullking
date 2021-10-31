@@ -2,10 +2,12 @@
   "extends": "../client/tsconfig.json",
   "compilerOptions": {
     "module": "commonjs",
-    "outDir": "dist",
+    "outDir": "../dist",
     "target": "ESNext",
+    "noEmit": false,
     "isolatedModules": false,
     "esModuleInterop": true
   },
-  "include": ["./**/*.ts"]
+  "include": ["./**/*.ts"],
+  "exclude": ["./tests", "./testModule.ts"]
 }
