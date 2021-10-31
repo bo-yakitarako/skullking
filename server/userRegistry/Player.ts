@@ -15,7 +15,7 @@ export class Player {
     this.name = name;
   }
 
-  public createJson() {
+  public createTitleJson() {
     const { playerId, name } = this;
     return { playerId, name };
   }

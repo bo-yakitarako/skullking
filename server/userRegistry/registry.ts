@@ -9,7 +9,7 @@ export const createRegistryFunction = (io: SocketIO) => {
     const playerId = players.length + 1;
     const addedPlayer = new Player(playerId, req.body.name);
     players = [...players, addedPlayer];
-    io.emit('createPlayer', [players]);
+    io.emit('startPlayers', [...players.map((p) => p.createTitleJson())]);
     res.json({ ok: true, playerId });
   };
 
