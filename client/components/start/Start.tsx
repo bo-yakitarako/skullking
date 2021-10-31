@@ -1,8 +1,9 @@
 import { Button } from '@chakra-ui/button';
 import { Image } from '@chakra-ui/image';
-import { Input } from '@chakra-ui/input';
 import { Box, Text } from '@chakra-ui/layout';
+import { Tooltip } from '@chakra-ui/react';
 import { keyframes } from '@chakra-ui/system';
+import { StartNameForm } from './StartNameForm';
 
 const setCrowdyKeyframe = (rotate: number) => `
   0%, 100% {
@@ -56,13 +57,14 @@ const Start: React.FC = () => {
         >
           すかるきんぐ
         </Text>
-        <Button width="64" marginY="8" size="lg" fontSize="xl" disabled={true}>
-          はじめる
-        </Button>
-        <Box display="flex" width="fit-content" marginX="auto">
-          <Input placeholder="名前を入力" color="white" />
-          <Button marginLeft="4">登録</Button>
-        </Box>
+        <Tooltip label="2人以上いないと始められないよ><" hasArrow bg="red.600">
+          <Box width="fit-content" marginX="auto" marginY="8">
+            <Button width="64" size="lg" fontSize="xl" disabled={true}>
+              はじめる
+            </Button>
+          </Box>
+        </Tooltip>
+        <StartNameForm />
       </Box>
     </Box>
   );
