@@ -1,11 +1,18 @@
 import express, { Request } from 'express';
 import next from 'next';
 import { Server } from 'socket.io';
+import { DefaultEventsMap } from 'socket.io/dist/typed-events';
+import { createRegistryFunction } from './userRegistry/registry';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-type PostReq<Body> = Request<any, any, Body>;
+export type PostReq<Body> = Request<any, any, Body>;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-type GetReq<Params> = Request<any, any, any, Params>;
+export type GetReq<Params> = Request<any, any, any, Params>;
+export type SocketIO = Server<
+  DefaultEventsMap,
+  DefaultEventsMap,
+  DefaultEventsMap
+>;
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev, dir: './client' });
@@ -30,8 +37,6 @@ app.prepare().then(() => {
     res.json({ ok: true });
   });
 
-  server.all('*', (req, res) => nextApiHandler(req, res));
-
   // 装飾についてはここから
   // @see https://note.affi-sapo-sv.com/nodejs-console-color-output.php
   const infoHead = '\x1b[37m\x1b[44m[info]\x1b[0m';
@@ -49,6 +54,10 @@ app.prepare().then(() => {
   });
 
   const io = new Server(httpServer);
+  const { createPlayer, rename } = createRegistryFunction(io);
+
+  server.post('/api/createPlayer', createPlayer);
+  server.post('/api/renamePlayer', rename);
 
   io.on('connection', (socket) => {
     if (dev) {
@@ -60,4 +69,6 @@ app.prepare().then(() => {
   const sendMessage = () => {
     io.send(message);
   };
+
+  server.all('*', (req, res) => nextApiHandler(req, res));
 });
