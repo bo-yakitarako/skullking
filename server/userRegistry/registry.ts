@@ -5,6 +5,10 @@ import { Player } from './Player';
 export let players: Player[] = [];
 
 export const createRegistryFunction = (io: SocketIO) => {
+  const firstMembers = () => {
+    io.emit('startPlayers', [...players.map((p) => p.createTitleJson())]);
+  };
+
   const createPlayer = (req: PostReq<{ name: string }>, res: Response) => {
     const playerId = players.length + 1;
     const addedPlayer = new Player(playerId, req.body.name);
@@ -30,5 +34,5 @@ export const createRegistryFunction = (io: SocketIO) => {
     res.json({ ok: true, name });
   };
 
-  return { createPlayer, rename };
+  return { firstMembers, createPlayer, rename };
 };

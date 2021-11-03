@@ -19,8 +19,6 @@ const app = next({ dev, dir: './client' });
 const nextApiHandler = app.getRequestHandler();
 const port = dev ? 3000 : 5000;
 
-let message = '屯田兵';
-
 app.prepare().then(() => {
   const server = express();
   server.use(express.urlencoded({ extended: true }));
@@ -29,12 +27,6 @@ app.prepare().then(() => {
   server.get('/api/unko', (req: GetReq<{ baka?: string }>, res) => {
     const { baka } = req.query;
     res.json({ ok: typeof baka !== 'undefined', baka });
-  });
-
-  server.post('/socket/message', (req: PostReq<{ message: string }>, res) => {
-    message = req.body.message;
-    sendMessage();
-    res.json({ ok: true });
   });
 
   // 装飾についてはここから
@@ -54,21 +46,12 @@ app.prepare().then(() => {
   });
 
   const io = new Server(httpServer);
-  const { createPlayer, rename } = createRegistryFunction(io);
+  const { firstMembers, createPlayer, rename } = createRegistryFunction(io);
 
   server.post('/api/createPlayer', createPlayer);
   server.post('/api/renamePlayer', rename);
 
-  io.on('connection', (socket) => {
-    if (dev) {
-      console.log(`${infoHead} WebSocketサーバー接続!\x1b[0m`);
-    }
-    socket.send(message);
-  });
-
-  const sendMessage = () => {
-    io.send(message);
-  };
+  io.on('connection', firstMembers);
 
   server.all('*', (req, res) => nextApiHandler(req, res));
 });
