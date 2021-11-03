@@ -1,6 +1,6 @@
 import express, { Request } from 'express';
 import next from 'next';
-import { Server } from 'socket.io';
+import { Server, Socket as _Socket } from 'socket.io';
 import { DefaultEventsMap } from 'socket.io/dist/typed-events';
 import { createRegistryFunction } from './userRegistry/registry';
 
@@ -13,29 +13,21 @@ export type SocketIO = Server<
   DefaultEventsMap,
   DefaultEventsMap
 >;
+export type Socket = _Socket<
+  DefaultEventsMap,
+  DefaultEventsMap,
+  DefaultEventsMap
+>;
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev, dir: './client' });
 const nextApiHandler = app.getRequestHandler();
 const port = dev ? 3000 : 5000;
 
-let message = '屯田兵';
-
 app.prepare().then(() => {
   const server = express();
   server.use(express.urlencoded({ extended: true }));
   server.use(express.json());
-
-  server.get('/api/unko', (req: GetReq<{ baka?: string }>, res) => {
-    const { baka } = req.query;
-    res.json({ ok: typeof baka !== 'undefined', baka });
-  });
-
-  server.post('/socket/message', (req: PostReq<{ message: string }>, res) => {
-    message = req.body.message;
-    sendMessage();
-    res.json({ ok: true });
-  });
 
   // 装飾についてはここから
   // @see https://note.affi-sapo-sv.com/nodejs-console-color-output.php
@@ -54,7 +46,7 @@ app.prepare().then(() => {
   });
 
   const io = new Server(httpServer);
-  const { createPlayer, rename } = createRegistryFunction(io);
+  const { createPlayer, rename, sendStartPlayers } = createRegistryFunction(io);
 
   server.post('/api/createPlayer', createPlayer);
   server.post('/api/renamePlayer', rename);
@@ -63,12 +55,10 @@ app.prepare().then(() => {
     if (dev) {
       console.log(`${infoHead} WebSocketサーバー接続!\x1b[0m`);
     }
-    socket.send(message);
+    sendStartPlayers(socket);
   });
 
-  const sendMessage = () => {
-    io.send(message);
-  };
-
+  // これ以降はクライアント側のルーティング
+  // server.postやserver.getをこれ以降に書かないように注意！！！
   server.all('*', (req, res) => nextApiHandler(req, res));
 });
